@@ -19,9 +19,10 @@ function App() {
       <ThemeProvider theme={light}>
         <Navigation />
         <Home />
+        <Showcase />
         <About />
         <Roadmap />
-        <Showcase />
+        {/*<Showcase />*/}
         <Team />
         <Faq />
         <Footer />

@@ -107,7 +107,7 @@ const Home = () => {
     <Section id="home">
       <Container>
         <Box>
-          <TypeWriterText />
+          <TypeWriterText text="Explore" link="#Arroz"/>
         </Box>
         <Box>
           <CoverVideo />

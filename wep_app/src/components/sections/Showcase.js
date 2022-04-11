@@ -1,7 +1,12 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Web3 from 'web3';
+import Button from "../Button";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import Contract from 'web3-eth-contract';
+import TypeWriterText from "../TypeWriterText";
+
+import baseContractABI from '../../contracts/baseContractABI.json'
 
 import img1 from "../../assets/Nfts/bighead.svg";
 import img2 from "../../assets/Nfts/bighead-1.svg";
@@ -56,6 +61,15 @@ const Row = styled.div`
   animation: ${move} linear infinite ${(props) => props.direction};
 `;
 
+const Box = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ImgContainer = styled.div`
   width: 15rem;
   margin: 0 1rem;
@@ -106,6 +120,20 @@ const Details = styled.div`
   }
 `;
 
+const ButtonContainer = styled.div`
+  width: 80%;
+  align-self: flex-start;
+
+  @media (max-width: 48em) {
+    align-self: center;
+    text-align: center;
+
+    button {
+      margin: 0 auto;
+    }
+  }
+`;
+
 const Price = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -116,6 +144,8 @@ const Price = styled.div`
     height: auto;
   }
 `;
+
+
 
 const NftItem = ({ img, number = 0, price = 0, passRef }) => {
   let play = (e) => {
@@ -148,12 +178,31 @@ const NftItem = ({ img, number = 0, price = 0, passRef }) => {
 };
 
 const Showcase = () => {
+  //This params are being saved to be passed onto other pages later on through a context
+  const [web3Provider, setWeb3Provider] = useState({})
+  const [baseMintContract, setBaseMintContract] = useState({})
+
   const Row1Ref = useRef(null);
   const Row2Ref = useRef(null);
 
+  const loadContract = async () => {
+    let ETHEREUM_CLIENT = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/d6e836f1b58444189bab1f7028484051"));
+    Contract.setProvider(ETHEREUM_CLIENT);
+    setWeb3Provider(ETHEREUM_CLIENT);
+    let baseContract = new Contract(baseContractABI, '0x33CCa1820C93C20974E06ff366c3b28b06809277')
+    setBaseMintContract(baseContract)
+  }
+  
+  useEffect(()=>{
+    loadContract()
+  }, [])
+
   return (
     <Section id="showcase">
-      <Row direction="none" ref={Row1Ref}>
+      <ButtonContainer>
+        <Button text="Mint" link="#About" />
+      </ButtonContainer>
+      {/*<Row direction="none" ref={Row1Ref}>
         <NftItem img={img1} number={852} price={1.0} passRef={Row1Ref} />
         <NftItem img={img2} number={123} price={1.2} passRef={Row1Ref} />
         <NftItem img={img3} number={456} price={2.5} passRef={Row1Ref} />
@@ -166,7 +215,7 @@ const Showcase = () => {
         <NftItem img={img8} number={455} price={1.8} passRef={Row2Ref} />
         <NftItem img={img9} number={456} price={5.1} passRef={Row2Ref} />
         <NftItem img={img10} number={865} price={3.7} passRef={Row2Ref} />
-      </Row>
+      </Row>*/}
     </Section>
   );
 };

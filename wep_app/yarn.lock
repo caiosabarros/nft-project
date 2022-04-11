@@ -10761,7 +10761,7 @@
     "web3-core-method" "1.7.3"
     "web3-utils" "1.7.3"
 
-"web3-eth-contract@1.7.3":
+"web3-eth-contract@^1.7.3", "web3-eth-contract@1.7.3":
   "integrity" "sha512-7mjkLxCNMWlQrlfM/MmNnlKRHwFk5XrZcbndoMt3KejcqDP6dPHi2PZLutEcw07n/Sk8OMpSamyF3QiGfmyRxw=="
   "resolved" "https://registry.npmjs.org/web3-eth-contract/-/web3-eth-contract-1.7.3.tgz"
   "version" "1.7.3"

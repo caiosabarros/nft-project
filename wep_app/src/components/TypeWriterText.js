@@ -75,7 +75,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const TypeWriterText = () => {
+const TypeWriterText = ({text, link}) => {
   return (
     <>
       <Title>
@@ -102,7 +102,7 @@ const TypeWriterText = () => {
       </Title>
       <SubTitle>Bored Of Apes? Try Something New.</SubTitle>
       <ButtonContainer>
-        <Button text="Explore" link="#about" />
+        <Button text={text} link={link} />
       </ButtonContainer>
     </>
   );
