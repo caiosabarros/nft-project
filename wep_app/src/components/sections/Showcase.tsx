@@ -190,10 +190,10 @@ const Showcase = () => {
   let {message, text} = useWallets();
 
   const loadContract = async () => {
-    let ETHEREUM_CLIENT = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/d6e836f1b58444189bab1f7028484051"));
-    Contract.setProvider(ETHEREUM_CLIENT);
-    setWeb3Provider(ETHEREUM_CLIENT);
-    let baseContract = new Contract(baseContractABI, '0x33CCa1820C93C20974E06ff366c3b28b06809277')
+    let infuraWeb3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/d6e836f1b58444189bab1f7028484051"));
+    Contract.setProvider(infuraWeb3);
+    setWeb3Provider(infuraWeb3);
+    let baseContract = new infuraWeb3.eth.Contract(baseContractABI, '0x33CCa1820C93C20974E06ff366c3b28b06809277')
     setBaseMintContract(baseContract)
   }
   

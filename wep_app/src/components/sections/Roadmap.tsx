@@ -173,7 +173,7 @@ const RoadMapItem = ({ title, subtext, addToRef }) => {
 
 const Roadmap = () => {
   const revealRefs = useRef([]);
-  revealRefs.current = [];
+  revealRefs.current = [] as any;
   gsap.registerPlugin(ScrollTrigger);
 
   const addToRefs = (el) => {

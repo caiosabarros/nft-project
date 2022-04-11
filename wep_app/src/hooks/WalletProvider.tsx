@@ -1,4 +1,4 @@
-import React, {useContext, createContext, useState} from 'react';
+import React, {FC, useContext, createContext, useState} from 'react';
 
 //What do I want to pass as a value from this context?
 // walletaddress, walletprovider(metamask | infura), contract, walletIsConnected, function connectWallet, function disconnectWallet, library web3
@@ -7,7 +7,9 @@ let obj = {
     message: "Console" 
 }
 
-
+interface Props {
+    children: React.ReactNode
+}
 
 let WalletContext = createContext(obj);
 // I want to know if the useEffect of a context is displayed on its children? Y/N
@@ -15,7 +17,7 @@ let WalletContext = createContext(obj);
 //If I don't export, It doesnt recognize on the WalletProvider on App.js
 //If I don't put the children, it will load the div and then the children:
 //The children is then used to receive a placement on the page
-export const WalletProvider = ({children}) => {
+export const WalletProvider : React.FC<Props> = ({children}) => {
 
     const name = 'Caio'
 

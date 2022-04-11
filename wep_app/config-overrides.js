@@ -1,5 +1,7 @@
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 const webpack = require('webpack');
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+
 
 module.exports = function override(config, env) {
   //do stuff with the webpack config...
@@ -34,6 +36,7 @@ module.exports = function override(config, env) {
       buffer: require.resolve('buffer'),
       stream: require.resolve('stream-browserify'),
   };
+
   config.plugins.push(
       new webpack.ProvidePlugin({
           process: 'process/browser',
@@ -41,7 +44,21 @@ module.exports = function override(config, env) {
       }),
   );
 
+  //Adding typescript
+  //config.resolve.push({
+  //  extensions: ['.ts', '.tsx', '.js']
+  //},)
+
   config.ignoreWarnings = [/Failed to parse source map/];
-  return config;
+  return {
+    ...config,
+    resolve: {
+        ...config.resolve,
+        plugins: [
+            ...config.resolve.plugins,
+            new TsconfigPathsPlugin()
+        ] 
+    }
+  };
 }
 

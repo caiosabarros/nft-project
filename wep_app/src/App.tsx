@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import { light } from "./styles/Themes";
+import React from 'react';
 
 import Navigation from "./components/Navigation";
 import Home from "./components/sections/Home";
