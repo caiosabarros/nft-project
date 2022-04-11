@@ -8,6 +8,8 @@ import TypeWriterText from "../TypeWriterText";
 
 import baseContractABI from '../../contracts/baseContractABI.json'
 
+import {useWallets} from '../../hooks/WalletProvider'
+
 import img1 from "../../assets/Nfts/bighead.svg";
 import img2 from "../../assets/Nfts/bighead-1.svg";
 import img3 from "../../assets/Nfts/bighead-2.svg";
@@ -185,6 +187,8 @@ const Showcase = () => {
   const Row1Ref = useRef(null);
   const Row2Ref = useRef(null);
 
+  let {message, text} = useWallets();
+
   const loadContract = async () => {
     let ETHEREUM_CLIENT = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/d6e836f1b58444189bab1f7028484051"));
     Contract.setProvider(ETHEREUM_CLIENT);
@@ -200,8 +204,9 @@ const Showcase = () => {
   return (
     <Section id="showcase">
       <ButtonContainer>
-        <Button text="Mint" link="#About" />
+        <Button text={text} link="#About" />
       </ButtonContainer>
+
       {/*<Row direction="none" ref={Row1Ref}>
         <NftItem img={img1} number={852} price={1.0} passRef={Row1Ref} />
         <NftItem img={img2} number={123} price={1.2} passRef={Row1Ref} />

@@ -12,6 +12,8 @@ import Faq from "./components/sections/Faq";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
+import {WalletProvider} from './hooks/WalletProvider'
+
 function App() {
   return (
     <>
@@ -19,7 +21,9 @@ function App() {
       <ThemeProvider theme={light}>
         <Navigation />
         <Home />
+        <WalletProvider>
         <Showcase />
+        </WalletProvider>
         <About />
         <Roadmap />
         {/*<Showcase />*/}
