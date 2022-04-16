@@ -31,3 +31,13 @@ Svg Icons From: https://icons8.com & https://freesvg.org/   <br />
 [type-writer effect](https://www.npmjs.com/package/typewriter-effect) <br />
 [react-confetti](https://www.npmjs.com/package/react-confetti) <br />
 [react-use](https://www.npmjs.com/package/react-use) <br />
+
+
+# Typescript Notes:
+
+There are 2 modes on typescript: the script and module mode. If I declare two or more functions or variables with the same name in different files within the project, typescript is able to understand it as an issue. That is why people will sometimes export things out of nothing, because that is important for them not to be on script mode, but on module mode, that does not complain about such issues because there will be import and exports inside the project.
+
+1. Installs for Learning TypesCript:
+npm i ts-node -D  
+npm i @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
+npm i prettier eslint-config-prettier eslint-plugin-prettier -D

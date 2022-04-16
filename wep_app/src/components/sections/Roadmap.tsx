@@ -158,7 +158,7 @@ const Text = styled.span`
   }
 `;
 
-type AddToRef = (el: any) => void;
+type AddToRef = (el: object) => void;
 
 const RoadMapItem = ({ title, subtext, addToRef }: {title: string, subtext: string, addToRef: AddToRef }) => {
   return (
@@ -178,7 +178,7 @@ const Roadmap = () => {
   revealRefs.current = [] as any;
   gsap.registerPlugin(ScrollTrigger);
 
-  const addToRefs = (el: obj) => {
+  const addToRefs = (el: object) => {
     if (el && !revealRefs.current.includes(el)) {
       revealRefs.current.push(el);
     }

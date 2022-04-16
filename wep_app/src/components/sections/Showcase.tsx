@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 import Contract from 'web3-eth-contract';
 import TypeWriterText from "../TypeWriterText";
+import { AbiItem } from 'web3-utils'
 
 import baseContractABI from '../../contracts/baseContractABI.json'
 
@@ -191,9 +192,8 @@ const Showcase = () => {
 
   const loadContract = async () => {
     let infuraWeb3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/d6e836f1b58444189bab1f7028484051"));
-    Contract.setProvider(infuraWeb3);
     setWeb3Provider(infuraWeb3);
-    let baseContract = new infuraWeb3.eth.Contract(baseContractABI, '0x33CCa1820C93C20974E06ff366c3b28b06809277')
+    let baseContract = new infuraWeb3.eth.Contract(baseContractABI as AbiItem[], '0x33CCa1820C93C20974E06ff366c3b28b06809277')
     setBaseMintContract(baseContract)
   }
   
